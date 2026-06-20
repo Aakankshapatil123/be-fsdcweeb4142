@@ -25,29 +25,28 @@
 // import the fs module
 const fs = require('fs');
 
-// read the contents of the file
-fs.readFile('./input.txt', 'utf-8', (err, data) => {
-    // if err is not null
-    // it means that there is some problem reading the
-    // contents of the file
+// write contents to the file
+// create a file if it doesn't exists
+// fs.writeFile('./output.txt', 'welcome', (err) => {
+//     if (err) {
+//         console.log(err);
+//         return;
+//     }
+// });
+
+fs.appendFile('./output.txt', 'nodejs', (err) => {
     if (err) {
-        console.log('Error in reading the contents of the file!');
-        console.log(`Error details:`, err);
+        console.log(err);
         return;
     }
-
-    // if the control comes here, it means there are no error
-    // in reading the contents of the file.
-    // use the data which has the entire content of the file
-    // console.log(data);
-    // console.log(data.split('\n'));
-
-    let lines = 0;
-    data
-        .split('\n')
-        .forEach((line) => {
-            lines++;
-        });
-    
-    console.log(`The file has ${lines} lines`);
 });
+
+//  fs.unlink('./output.txt', (err) => {
+//     if (err) {
+//         console.log('error deleting the file');
+//         console.log(err);
+//         return;
+//     }
+
+//     console.log('deleted the file');
+// });
