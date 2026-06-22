@@ -1,6 +1,0 @@
-welcome to fs module
-using fs module
-we can manage the files
-in the repo.!
-
-fs module helps manage like create a new file, read a new file, and write contents to the file.
