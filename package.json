@@ -26,5 +26,8 @@
   "homepage": "https://github.com/Aakankshapatil123/be-fsdcweeb4142#readme",
   "devDependencies": {
     "nodemo": "^1.0.0"
+  },
+  "dependencies": {
+    "express": "^5.2.1"
   }
 }
