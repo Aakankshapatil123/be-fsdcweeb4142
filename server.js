@@ -2,7 +2,7 @@
 const express = require("express");
 
 // create an express application
-const app = express();
+const app = express()
 
 // confihure the routes
 app.get('/', (request, response) => {
