@@ -18,7 +18,7 @@ response.json({message: 'hello PUT!'})
 })
 
 app.delete('/', (request, response) => {
-response.json({message: 'hello DEIELE!'})
+response.json({message: 'hello DELETE!'})
 })
 
 // start the server to losten for http requests
