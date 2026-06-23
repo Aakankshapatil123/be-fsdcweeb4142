@@ -1,6 +1,6 @@
 ## JavaScript Modules
 
-There are two different types of JavaScript modules:
+There are two different types of javsript modules
 
 1. CommonJS modules, which are used in Node.js. They use `require()` to import and `module.exports` to export. The file extension for CommonJS modules is typically `.js` or `.cjs`.
 
