@@ -1,15 +1,12 @@
 
 // import express into the app
 const express = require("express");
+const logger = require("./middleware/logger");
+const errorRout = require("./middleware/errorRout");
 
 // create an express application
 const app = express()
 
-// middleware that acts like an oprator that logas all the request to the console or log file
-const logger = (request, response, next) => {
- console.log(' i m a middleware');
- next(); //calss the next middleware
-}
 
 // use the middleware
 app.use(logger);
@@ -36,10 +33,7 @@ app.get('/products', (request, response) => {
 response.json({message: 'hello get fot products!'})
 })
 
-// handle the error routes
-const errorRout = (request, response, next) => {
-response.json({message: "Route not found"})
-}
+
 
 app.use(errorRout)
 
