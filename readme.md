@@ -1,6 +1,6 @@
 ## JavaScript Modules
 
-There are two different types of javsript modules
+There are two different types of JavaScript modules:
 
 1. CommonJS modules, which are used in Node.js. They use `require()` to import and `module.exports` to export. The file extension for CommonJS modules is typically `.js` or `.cjs`.
 
@@ -126,3 +126,7 @@ or
     node server.js
     ```
 10. Open your web browser and navigate to `http://localhost:3000`. You should see the message "Hello, World!" displayed in your browser.
+
+## Middleware
+
+- Middleware are functions that exists in the middle of the request-response cycle. They have access to the request object (`req`), the response object (`res`), and the next middleware function in the application’s request-response cycle. Middleware functions can perform tasks such as executing code, modifying the request and response objects, ending the request-response cycle, or calling the next middleware function.
