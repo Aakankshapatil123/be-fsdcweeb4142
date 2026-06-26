@@ -3,10 +3,14 @@ const express = require("express");
 const logger = require("./middleware/logger");
 const errorRout = require("./middleware/errorRout");
 const notesRouter = require("./router/notesRouter");
+const bodyParser = require('body-parser')
 
 // create an express application
 const app = express()
 
+// add a middleware to parse all the request body
+// app.use(express.json())
+app.use(bodyParser.json())
 
 // use the middleware
 app.use(logger);
