@@ -1,7 +1,7 @@
 const Note = require('../models/note')
 
 const notesController = {
-    getAllNotes: async (request, response) => {
+   getAllNotes: async (request, response) => {
       try {
          // get all the notes from database
          const notes = await Note.find({}, { __v: 0});
@@ -11,9 +11,9 @@ const notesController = {
       }catch(e) {
          return response.status(500).json({message: "Error creating a new note .try again later!", error:e.data.message})
       }
-    },
+   },
 
-    creatNote: async (request, response) => {
+   creatNote: async (request, response) => {
         try{
          // get the data from the request body
          const { title, description, tag} = request.body;
@@ -34,9 +34,9 @@ const notesController = {
            return response.status(500).json({message: 'Error creating a new note. Try again later!', error:e.data.message})
         }
 
-    },
+   },
 
-    updateNote: async (request, response) => {
+   updateNote: async (request, response) => {
       try {
          // get the id from request params
       const { id } = request.params;
@@ -52,13 +52,14 @@ const notesController = {
 
       // await noteToUpdate[0].save()
 
-   //    // send the response
+       // send the response
       response.json({message: "note is updated succesfully"})
       }catch(e) {
        return response.status(500).json({message: "Error updating note. Try again Later!", error:e.message})
       }
-    },
-    deleteNote: async (request, response) => {
+   },
+
+   deleteNote: async (request, response) => {
        try {
          // get the id from the request params
          const { id } = request.params;
@@ -72,7 +73,24 @@ const notesController = {
        }catch(e) {
          return response.status(500).json({message: "Error deleting note. Try again Later", error:e.message})
        }
-    }
+      
+   },
+
+   getNoteByID: async (request, response) => {
+   try{
+      // get the id from the reuest.params;
+      const { id } = request.params;
+
+      // call the id method
+      const note = await Note.findById(id);
+      
+      // send response
+      response.json(note);
+
+   }catch(e) {
+     return response.status(500).json({message: "Error fetching note. Try again Later", error:e.message}) 
+   }
+   }
 }
 
 module.exports = notesController;
