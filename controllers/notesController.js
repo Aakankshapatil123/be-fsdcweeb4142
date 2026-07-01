@@ -58,8 +58,20 @@ const notesController = {
        return response.status(500).json({message: "Error updating note. Try again Later!", error:e.message})
       }
     },
-    deleteNote: (request, response) => {
-       response.json({message: 'delete notes!'})
+    deleteNote: async (request, response) => {
+       try {
+         // get the id from the request params
+         const { id } = request.params;
+
+         // call the delete by id method
+          await Note.findByIdAndDelete(id);
+
+         //  send a response
+         response.json({message: "Note deleted Sucessfully"})
+
+       }catch(e) {
+         return response.status(500).json({message: "Error deleting note. Try again Later", error:e.message})
+       }
     }
 }
 

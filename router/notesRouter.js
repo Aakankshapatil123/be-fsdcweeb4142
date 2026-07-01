@@ -12,7 +12,7 @@ notesRouter.post('/', creatNote)
 
 notesRouter.put('/:id', updateNote)
 
-notesRouter.delete('/', deleteNote)
+notesRouter.delete('/:id', deleteNote)
 
 // export the router
 module.exports = notesRouter;
