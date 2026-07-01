@@ -1,6 +1,6 @@
 const app = require("./app");
 const mongoose = require('mongoose');
-const { MONGODB_URL, HOST, PORT } = require("./Utils/config");
+const { MONGODB_URL, HOST, PORT } = require("./utils/config");
 
 
 mongoose
@@ -10,7 +10,7 @@ mongoose
 
         // start the server to listen for http requests
         app
-        .listen(process.env.PORT, process.env.HOST, (error) => {
+        .listen(PORT, HOST, (error) => {
             if (error) {
                 console.log('Error starting the server:', error.message);
                 return; // exits the function immediately if there is an error

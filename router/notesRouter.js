@@ -10,7 +10,7 @@ notesRouter.get('/', getAllNotes)
 
 notesRouter.post('/', creatNote)
 
-notesRouter.put('/', updateNote)
+notesRouter.put('/:id', updateNote)
 
 notesRouter.delete('/', deleteNote)
 
