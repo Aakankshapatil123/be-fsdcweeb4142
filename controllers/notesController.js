@@ -9,7 +9,7 @@ const notesController = {
          response.json({notes});
 
       }catch(e) {
-         return response.status(500).json({message: "Error creating a new note .try again later!", error:e.data.message})
+         return response.status(500).json({message: "Error creating a new note .try again later!", error:e.message})
       }
    },
 
