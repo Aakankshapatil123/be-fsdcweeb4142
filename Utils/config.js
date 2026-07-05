@@ -5,7 +5,7 @@ const PORT = process.env.PORT;
 const HOST = process.env.HOST;
 
 module.exports = {
-    MONGODB_URL
-    PORT
+    MONGODB_URL,
+    PORT,
     HOST
 }
