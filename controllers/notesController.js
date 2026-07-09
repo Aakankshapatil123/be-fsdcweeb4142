@@ -31,7 +31,7 @@ const notesController = {
          response.json({message: 'Note create Successfully!', data:savedNote })
 
         }catch(e) {
-           return response.status(500).json({message: 'Error creating a new note. Try again later!', error:e.data.message})
+           return response.status(500).json({message: 'Error creating a new note. Try again later!', error:e.message})
         }
 
    },

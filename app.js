@@ -3,7 +3,8 @@ const express = require("express");
 const logger = require("./middleware/logger");
 const errorRout = require("./middleware/errorRout");
 const notesRouter = require("./router/notesRouter");
-const bodyParser = require('body-parser')
+const bodyParser = require('body-parser');
+const authRouter = require("./router/authRouter");
 
 // create an express application
 const app = express()
@@ -17,6 +18,7 @@ app.use(logger);
 
 // confihure the routes for root route '/';
 app.use('/notes', notesRouter)
+app.use('/auth',authRouter)
 
 app.use(errorRout)
 
