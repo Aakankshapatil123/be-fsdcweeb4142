@@ -1,4 +1,5 @@
 const Note = require('../models/note')
+const jwt = require('jsonwebtoken')
 
 const notesController = {
    getAllNotes: async (request, response) => {

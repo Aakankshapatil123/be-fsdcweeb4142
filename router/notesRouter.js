@@ -1,20 +1,23 @@
 // import express
 const express = require('express');
 const { getAllNotes, creatNote, updateNote, deleteNote, getNoteByID } = require('../controllers/notesController');
+const { isAuthenticated, allowRoles } = require('../middleware/auth');
 
 // create router
 const notesRouter = express.Router();
 
 // confihure the routes 
-notesRouter.get('/', getAllNotes)
+// Protected Routes: Allowed Roles: user
+notesRouter.get('/', isAuthenticated, allowRoles(['user', 'admin']),getAllNotes);
 
-notesRouter.get('/:id', getNoteByID)
+notesRouter.get('/:id', isAuthenticated,  allowRoles(['user', 'admin']), getNoteByID);
 
-notesRouter.post('/', creatNote)
+notesRouter.post('/', isAuthenticated,  allowRoles(['user', 'admin']), creatNote);
 
-notesRouter.put('/:id', updateNote)
+// Protected Routes: Allowed Roles: admin
+notesRouter.put('/:id', isAuthenticated,  allowRoles(['admin']), updateNote);
 
-notesRouter.delete('/:id', deleteNote)
+notesRouter.delete('/:id', isAuthenticated,  allowRoles(['admin']),deleteNote);
 
 // export the router
 module.exports = notesRouter;

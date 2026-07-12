@@ -1,6 +1,7 @@
 const User = require("../models/user")
 const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken')
+const jwt = require('jsonwebtoken');
+
 
 const authController = {
     register: async (request, response) => {
@@ -64,11 +65,12 @@ const authController = {
             
             // if we reach here , it meanse the user has provide valid credentials
             // generate a jwt token for the user
-            const token = await jwt.sign({userId: existingUser._id}, 'apple', {expiresIn: '1h'})
+            const token = await jwt.sign({userId: existingUser._id}, 'apple', {expiresIn: '3h'})
 
-            // console.log(token)
+            // store the token in the http only cookie
+            response.cookie('token', token, {httpOnly: true});
 
-            response.status(200).json({message: "User login successfuly", token})
+            response.status(200).json({message: "User login successfuly" })
 
         }catch(e) {
          return response.status(500).json({message: "Error loggong in .try again later!", error:e.message})   
@@ -77,14 +79,8 @@ const authController = {
 
     me: async (request, response) => {
         try{
-            // get the token from the request headers
-            const token = request.headers.authorization.split(' ')[1];
-            
-            // verify the token
-            const decodedToken = await jwt.verify(token, 'apple')
-
-            // get the user id from token
-            const userId = decodedToken.userId
+            // get the user id from the request object
+            const userId = request.userId;
 
             // fetch the user details from the databse
             const user = await User.findById(userId).select('-password -__v');
@@ -93,6 +89,18 @@ const authController = {
 
         }catch(e) {
             return response.status(500).json({message: "error feaching user details. Try again later!", error:e.message})
+        }
+    },
+
+    logout: async (request, response) => {
+        try{
+            // clear the token the cookies
+            response.clearCookie('token')
+
+            response.status(200).json({message: "User logged out successfuly"})
+
+        }catch(e) {
+            return response.status(500).json({message: "Error logging out. Try again later!", error:e.message})
         }
     }
 }

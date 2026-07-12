@@ -5,6 +5,7 @@ const errorRout = require("./middleware/errorRout");
 const notesRouter = require("./router/notesRouter");
 const bodyParser = require('body-parser');
 const authRouter = require("./router/authRouter");
+const cookieParaser = require('cookie-parser')
 
 // create an express application
 const app = express()
@@ -12,6 +13,9 @@ const app = express()
 // add a middleware to parse all the request body
 // app.use(express.json())
 app.use(bodyParser.json())
+
+// add a middleware to parser all the cookies
+app.use(cookieParaser());
 
 // use the middleware
 app.use(logger);
