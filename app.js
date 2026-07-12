@@ -6,9 +6,18 @@ const notesRouter = require("./router/notesRouter");
 const bodyParser = require('body-parser');
 const authRouter = require("./router/authRouter");
 const cookieParaser = require('cookie-parser')
+const cros = require('cors')
 
 // create an express application
 const app = express()
+
+// add a middleware to allow cross-origin requests
+app.use(cros({
+    origin: 'http://localhost:5173', //allow request from this origin,
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],//ALLOW TO HTTP METHODS,
+    allowedHeaders: ['Content-Type', 'Authorization'] ,//allow this headers
+    credentials: true //allow cookies to be send with request
+}));
 
 // add a middleware to parse all the request body
 // app.use(express.json())
