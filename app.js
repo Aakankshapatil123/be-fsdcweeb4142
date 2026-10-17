@@ -13,10 +13,10 @@ const app = express()
 
 // add a middleware to allow cross-origin requests
 app.use(cros({
-    origin: 'http://localhost:5173', //allow request from this origin,
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],//ALLOW TO HTTP METHODS,
-    allowedHeaders: ['Content-Type', 'Authorization'] ,//allow this headers
-    credentials: true //allow cookies to be send with request
+    origin: 'http://localhost:5173',
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials: true
 }));
 
 // add a middleware to parse all the request body
