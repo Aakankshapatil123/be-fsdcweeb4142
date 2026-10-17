@@ -12,12 +12,17 @@ const cros = require('cors')
 const app = express()
 
 // add a middleware to allow cross-origin requests
+
 app.use(cros({
-    origin: 'http://localhost:5173',
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    origin: [
+        'http://localhost:5173',
+        'https://notespace-aakanksha.netlify.app'
+    ],
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true
 }));
+
 
 // add a middleware to parse all the request body
 // app.use(express.json())
